@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Step2AGroups } from './Step2AGroups';
+import { Link } from "react-router-dom";
 
 class Step2A extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

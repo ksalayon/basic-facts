@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Home } from './Scenes/Home/Home';
 import { Step2A } from './Scenes/Step2A/Step2A';
+import { Step2AGroups } from './Scenes/Step2A/Step2AGroups';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
 
@@ -26,6 +27,7 @@ const BFRouter = () => (
 
       <Route exact path="/" component={Home} />
       <Route path="/step2a" component={Step2A} />
+      <Route path="/step2a/groups" component={Step2AGroups} />
       <Route path="/step2b" component={Step2B} />
       <Route path="/settings" component={BFSetttings} />
     </div>

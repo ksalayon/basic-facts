@@ -1,30 +1,89 @@
 var GroupService = (function(){
 
-  function generate(divisor, limit) {
+  var items = [];
+
+  function operands(divisor, limit) {
 
     var operands = [];
-
     for(let i = 0; i <= limit; i++) {
       var res = i * divisor;
       if(res <= limit) {
         operands.push({o1: res, o2: (limit - res)});
       }
     }
-
     return operands;
   }
 
-  function getRandomPairs(operands, min, max) {
+  function checkPair(tmpItems, pair) {
+    var exists = false;
+    tmpItems.forEach((item, index) => {
+      if(item.o1 === pair.o1 && item.o2 === pair.o2) {
+        exists = true;
+      }
+    });
+
+    return exists;
+  }
+
+
+
+  function randomPairs(operands, min, max, numberOfItems) {
     min = Math.ceil(min);
-    max = (Math.floor(max) + 1);
-    const randomRes = Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-    return operands[randomRes];
+    var maxPlus = (Math.floor(max) + 1);
+
+
+    for(let i = 0; i <= numberOfItems; i++) {
+      var tmpItems = [...items];
+      if(tmpItems.length >= numberOfItems){
+        break;
+      }
+      
+      var randomRes = Math.floor(Math.random() * (maxPlus - min)); //The maximum is exclusive and the minimum is inclusive
+      let pair = Object.assign({}, operands[randomRes]);
+
+      if(tmpItems.length > 0) {
+        var exists = false;
+
+        exists = checkPair(tmpItems, pair);
+
+        if(!exists) {
+          items.push(pair);
+        } else {
+          randomPairs(operands, min, max, numberOfItems);
+        }
+
+      } else {
+        items.push(pair);
+        tmpItems = [...items];
+      }
+    }
+
+    return items;
+  }
+
+  function checkForDuplicates(pairs) {
+    var dups = [];
+    pairs.forEach((pair, index) => {
+      pairs.forEach((obj, idx) => {
+        if(obj.o1 === pair.o1 && obj.o2 === pair.o2 && idx !== index) {
+          dups.push[pair];
+        }
+      });
+    });
+
+    return dups;
   }
 
   return {
-    generate: (divisor, limit) => {
-      var operands = generate(divisor, limit);
-      return getRandomPairs(operands, 0, operands.length + 1);
+    items: (divisor, limit, numberOfItems) => {
+      const ops = operands(divisor, limit);
+      var pairs = randomPairs(ops, 0, ops.length - 1, numberOfItems);
+
+
+      return pairs;
+    },
+    hasDups: (pairs) => {
+      return (checkForDuplicates(pairs).length > 0) ? true : false;
     }
   }
 
