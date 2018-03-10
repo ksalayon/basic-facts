@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#Step2AGroup .actions {
+    padding:10px;
+    margin:10px 0;
+    position: relative;
+    display: block;
+    clear:both;
+}
+#Step2AGroup button.submit{
+    display: block;
+    position: relative;
+    font-size: 20px;
+}

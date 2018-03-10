@@ -79,7 +79,6 @@ var GroupService = (function(){
       const ops = operands(divisor, limit);
       var pairs = randomPairs(ops, 0, ops.length - 1, numberOfItems);
 
-
       return pairs;
     },
     hasDups: (pairs) => {

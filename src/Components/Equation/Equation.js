@@ -6,6 +6,7 @@ class Equation extends Component {
   renderParts() {
 
     var resultPart;
+
     if(!this.props.showAnswer) {
       resultPart = (<div className="answer"><input type="text" value={this.props.answer} /></div>);
     } else {
@@ -26,12 +27,22 @@ class Equation extends Component {
       secondOperandPart = (<div className="second-operand input"><input type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
     }
 
+    var successPart;
+    if(this.props.done) {
+      if (this.props.solved) {
+        successPart = (<div className="result">&#x2705;</div>)
+      } else {
+        successPart = (<div className="result">&#x274C;</div>)
+      }
+    }
+
     return <div className="parts">
         { firstOperandPart }
         <div className="operator">{ this.props.operator }</div>
         { secondOperandPart }
         <div className="equals-sign">=</div>
         { resultPart }
+        { successPart }
       </div>
   }
 
