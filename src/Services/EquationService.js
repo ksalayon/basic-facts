@@ -21,27 +21,28 @@ var EquationService = (function(){
   }
 
   function execute(firstOp, secondOp, operator) {
-
+    var result = null;
     switch (operator) {
       case '+':
-          return add(firstOp, secondOp);
+          result = add(firstOp, secondOp);
         break;
 
       case '-':
-          return subtract(firstOp, secondOp);
+          result = subtract(firstOp, secondOp);
         break;
 
       case 'x':
-          return multiply(firstOp, secondOp);
+          result = multiply(firstOp, secondOp);
         break;
 
       case '/':
-          return divide(firstOp, secondOp);
+          result = divide(firstOp, secondOp);
         break;
 
       default:
-        return null;
+        result = null;
     }
+    return result;
   }
 
   return {

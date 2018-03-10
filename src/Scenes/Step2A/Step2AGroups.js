@@ -41,7 +41,7 @@ class Step2AGroups extends Component {
 
   handleChange = (e, id) => {
 
-    var val = parseInt(e.target.value);
+    var val = parseInt(e.target.value, 10);
 
     var items = [...this.state.items];
     items = items.map((item, index) => {
@@ -85,7 +85,7 @@ class Step2AGroups extends Component {
 
   render() {
     return (
-      <div className="step-2a-group">
+      <div id="Step2AGroup">
         <div className="equations">
           { this.renderEquations() }
         </div>

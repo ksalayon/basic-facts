@@ -66,7 +66,7 @@ var GroupService = (function(){
     pairs.forEach((pair, index) => {
       pairs.forEach((obj, idx) => {
         if(obj.firstOperand === pair.firstOperand && obj.secondOperand === pair.secondOperand && idx !== index) {
-          dups.push[pair];
+          dups.push(pair);
         }
       });
     });
