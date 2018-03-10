@@ -1,0 +1,28 @@
+.equation {
+    display:block;
+    position: relative;
+    float:left;
+    clear:both;
+    margin: 5px 0 0 0;
+    padding:5px;
+}
+
+.equation .parts {
+    display:block;
+    position: relative;
+}
+
+.equation .parts > div {
+    display:block;
+    position: relative;
+    float:left;
+    clear:right;
+    padding:5px;
+}
+
+.equation .parts .first-operand,
+.equation .parts .first-operand input,
+.equation .parts .second-operand,
+.equation .parts .second-operand input {
+    max-width: 30px;
+}
