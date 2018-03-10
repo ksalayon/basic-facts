@@ -8,7 +8,7 @@ var GroupService = (function(){
     for(let i = 0; i <= limit; i++) {
       var res = i * divisor;
       if(res <= limit) {
-        operands.push({o1: res, o2: (limit - res)});
+        operands.push({firstOperand: res, secondOperand: (limit - res)});
       }
     }
     return operands;
@@ -17,7 +17,7 @@ var GroupService = (function(){
   function checkPair(tmpItems, pair) {
     var exists = false;
     tmpItems.forEach((item, index) => {
-      if(item.o1 === pair.o1 && item.o2 === pair.o2) {
+      if(item.firstOperand === pair.firstOperand && item.secondOperand === pair.secondOperand) {
         exists = true;
       }
     });
@@ -37,7 +37,7 @@ var GroupService = (function(){
       if(tmpItems.length >= numberOfItems){
         break;
       }
-      
+
       var randomRes = Math.floor(Math.random() * (maxPlus - min)); //The maximum is exclusive and the minimum is inclusive
       let pair = Object.assign({}, operands[randomRes]);
 
@@ -65,7 +65,7 @@ var GroupService = (function(){
     var dups = [];
     pairs.forEach((pair, index) => {
       pairs.forEach((obj, idx) => {
-        if(obj.o1 === pair.o1 && obj.o2 === pair.o2 && idx !== index) {
+        if(obj.firstOperand === pair.firstOperand && obj.secondOperand === pair.secondOperand && idx !== index) {
           dups.push[pair];
         }
       });

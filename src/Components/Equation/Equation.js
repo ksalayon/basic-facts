@@ -3,88 +3,27 @@ import './index.css';
 
 class Equation extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      foVisible: false,
-      soVisible: false
-    }
-  }
-
-  add() {
-      const args = Array.from(arguments);
-      return args.reduce((ac, cv) => (ac + cv));
-  }
-
-  subtract() {
-    const args = Array.from(arguments);
-    return args.reduce((ac, cv) => (ac - cv));
-  }
-
-  multiply() {
-    const args = Array.from(arguments);
-    return args.reduce((ac, cv) => (ac * cv));
-  }
-
-  divide() {
-    const args = Array.from(arguments);
-    return args.reduce((ac, cv) => (ac / cv));
-  }
-
-  execute() {
-    const firstOp = this.props.firstOperand;
-    const secondOp = this.props.secondOperand;
-
-    switch (this.props.operator) {
-      case '+':
-          return this.add(firstOp, secondOp);
-        break;
-
-      case '-':
-          return this.subtract(firstOp, secondOp);
-        break;
-
-      case 'x':
-          return this.multiply(firstOp, secondOp);
-        break;
-
-      case '/':
-          return this.divide(firstOp, secondOp);
-        break;
-
-      default:
-        return 0;
-    }
-  }
-
   renderParts() {
-
-    const ran = Math.floor(Math.random() * 2) + 0;
-    console.log('ran: ', ran, ' for ', this.props);
-    this.setState = {
-      foVisible: !ran,
-      soVisible: ran
-    };
 
     var resultPart;
     if(!this.props.showAnswer) {
-      resultPart = (<div className="answer"><input type="text" /></div>);
+      resultPart = (<div className="answer"><input type="text" value={this.props.answer} /></div>);
     } else {
-      resultPart = (<div><span className="answer">{ this.execute() }</span></div>);
+      resultPart = (<div><span className="answer">{ this.props.answer }</span></div>);
     }
 
     var firstOperandPart;
-    if(!ran) {
+    if(!this.props.firstOperandInput) {
       firstOperandPart = (<div className="first-operand">{ this.props.firstOperand }</div>);
     } else {
-      firstOperandPart = (<div className="first-operand input"><input type="text" /></div>);
+      firstOperandPart = (<div className="first-operand input"><input type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
     }
 
     var secondOperandPart;
-    if(ran) {
+    if(!this.props.secondOperandInput) {
       secondOperandPart = (<div className="second-operand">{ this.props.secondOperand }</div>);
     } else {
-      secondOperandPart = (<div className="second-operand input"><input type="text" /></div>);
+      secondOperandPart = (<div className="second-operand input"><input type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
     }
 
     return <div className="parts">
