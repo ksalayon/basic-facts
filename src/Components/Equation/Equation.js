@@ -8,7 +8,7 @@ class Equation extends Component {
     var resultPart;
 
     if(!this.props.showAnswer) {
-      resultPart = (<div className="answer"><input type="text" value={this.props.answer} /></div>);
+      resultPart = (<div className="answer"><input type="text" value={this.props.input}  onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
     } else {
       resultPart = (<div><span className="answer">{ this.props.answer }</span></div>);
     }

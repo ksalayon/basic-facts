@@ -13,6 +13,12 @@ class Step2A extends Component {
             <p>e.g 35 + __ = 100</p>
             <Link to="/step2a/groups">Go</Link>
           </li>
+          <li>
+            <p>Multiplication/Division facts for 2's</p>
+            <p>e.g 3 x 2 = __</p>
+            <p>e.g 18 / 2 = __</p>
+            <Link to="/step2a/muldivbytwo">Go</Link>
+          </li>
         </ul>
         <hr />
       </div>
