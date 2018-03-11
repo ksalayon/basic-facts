@@ -32,7 +32,7 @@ class Equation extends Component {
       if (this.props.solved) {
         successPart = (<div className="result">&#x2705;</div>)
       } else {
-        successPart = (<div className="result">&#x274C;</div>)
+        successPart = (<div className="result">&#x274C; - Correct Answer is {this.props.expectedInput}</div>)
       }
     }
 

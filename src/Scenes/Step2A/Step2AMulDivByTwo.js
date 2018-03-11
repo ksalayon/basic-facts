@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { MulService } from '../../Services/MulService';
 import { EquationService as es} from '../../Services/EquationService';
 import { Equation } from '../../Components/Equation/Equation';
+import { ResultDisplay } from '../../Components/ResultDisplay';
 import '../../index.css';
 
 
@@ -125,6 +126,7 @@ class Step2AMulDivByTwo extends Component {
         answer={item.answer}
         showAnswer={item.showAnswer}
         input={item.input}
+        expectedInput={item.expectedInput}
         solved={item.solved}
         done={item.done}
         onChange={(id, val) => this.handleChange(id, val)} />
@@ -133,34 +135,11 @@ class Step2AMulDivByTwo extends Component {
 
   renderResults = () => {
     if(this.state.submitted) {
-      var points = this.state.numPassed;
-      var total = this.state.numberOfItems;
-      var percentage = ((points/total) * 100);
-
-      var intro;
-      if(percentage < 50) {
-        intro = <h3>Practice makes perfect. You're getting there...</h3>;
-      } else if(percentage >= 50 && percentage <= 60) {
-        intro = <h3>Just a little more. You're getting closer to greatness!</h3>;
-      } else if(percentage > 60 && percentage <= 70) {
-        intro = <h3>Good job! Told you, you can do it!</h3>;
-      } else if(percentage > 70 && percentage <= 80) {
-        intro = <h3>Awesome Job! Reach for the stars!</h3>;
-      } else if(percentage > 80 && percentage <= 95) {
-        intro = <h3>Double high-five! You are now ready to level-up! Great Job!</h3>;
-      } else if(percentage > 95 && percentage < 100) {
-        intro = <h3>Double, Triple, Quadruple high-five! You're on fire!</h3>;
-      } else {
-        intro = <h3>Skra-Ka-Doooshh Baby! You're unstoppable like a hulking train on rainbow train-tracks! Weeeeee!</h3>;
-      }
-
-      var score = <p>You got {points} points over {total} </p>;
       return (
-        <div className="results">
-          {intro}
-          {score}
-        </div>
-
+        <ResultDisplay
+          points={this.state.numPassed}
+          total={this.state.numberOfItems}
+        />
       );
     }
 
