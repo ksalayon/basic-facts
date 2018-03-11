@@ -4,7 +4,15 @@ export class Home extends Component {
 
   render() {
     return (
-      <h1>Welcome Home</h1>
+      <div id="BFHome">
+        <header>
+          <h1 className="App-title">Welcome to the Basic Facts Homework App</h1>
+        </header>
+        <p className="intro">
+          Test your knowledge of Basic Facts.
+        </p>
+      </div>
+
     );
   }
 }

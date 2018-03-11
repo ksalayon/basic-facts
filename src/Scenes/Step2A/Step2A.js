@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import '../../index.css';
 
 class Step2A extends Component {
 
   render() {
     return (
-      <div class="step-menu">
+      <div className="step-menu">
         <h3>This is the Step 2A Stage - Good Luck!</h3>
         <ul>
           <li>

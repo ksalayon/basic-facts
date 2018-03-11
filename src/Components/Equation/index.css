@@ -1,4 +1,4 @@
-.equation {
+.equation-component {
     display:block;
     position: relative;
     float:left;
@@ -7,12 +7,12 @@
     padding:5px;
 }
 
-.equation .parts {
+.equation-component .parts {
     display:block;
     position: relative;
 }
 
-.equation .parts > div {
+.equation-component .parts > div {
     display:block;
     position: relative;
     float:left;
@@ -20,9 +20,9 @@
     padding:5px;
 }
 
-.equation .parts .first-operand,
-.equation .parts .first-operand input,
-.equation .parts .second-operand,
-.equation .parts .second-operand input {
+.equation-component .parts .first-operand,
+.equation-component .parts .first-operand input,
+.equation-component .parts .second-operand,
+.equation-component .parts .second-operand input {
     max-width: 30px;
 }

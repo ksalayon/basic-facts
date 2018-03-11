@@ -3,7 +3,6 @@ import { MulService } from '../../Services/MulService';
 import { EquationService as es} from '../../Services/EquationService';
 import { Equation } from '../../Components/Equation/Equation';
 import { ResultDisplay } from '../../Components/ResultDisplay';
-import '../../index.css';
 
 
 class Step2AMulDivByFive extends Component {

@@ -2,8 +2,6 @@ import {BFService} from './BFService';
 
 var GroupService = (function(BFService){
 
-  var items = [];
-
   function operands(divisor, limit) {
 
     var operands = [];
