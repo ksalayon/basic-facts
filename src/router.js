@@ -4,6 +4,7 @@ import { Home } from './Scenes/Home/Home';
 import { Step2A } from './Scenes/Step2A/Step2A';
 import { Step2AGroups } from './Scenes/Step2A/Step2AGroups';
 import { Step2AMulDivByTwo } from './Scenes/Step2A/Step2AMulDivByTwo';
+import { Step2AMulDivByFive } from './Scenes/Step2A/Step2AMulDivByFive';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
 
@@ -30,6 +31,7 @@ const BFRouter = () => (
       <Route path="/step2a" component={Step2A} />
       <Route path="/step2a/groups" component={Step2AGroups} />
       <Route path="/step2a/muldivbytwo" component={Step2AMulDivByTwo} />
+      <Route path="/step2a/muldivbyfive" component={Step2AMulDivByFive} />
       <Route path="/step2b" component={Step2B} />
       <Route path="/settings" component={BFSetttings} />
     </div>

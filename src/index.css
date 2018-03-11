@@ -16,3 +16,21 @@ body {
     position: relative;
     font-size: 20px;
 }
+
+.step-menu ul {
+    clear:both;
+    display: block;
+    position: relative;
+    padding:5px;
+
+}
+
+.step-menu ul li {
+    display:block;
+    float:left;
+    position: relative;
+    padding: 10px;
+    margin-right: 20px;
+    background-color:#CCC;
+
+}
