@@ -6,6 +6,7 @@ import { Step2A } from './Scenes/Step2A/Step2A';
 import { Step2AGroups } from './Scenes/Step2A/Step2AGroups';
 import { Step2AMulDivByTwo } from './Scenes/Step2A/Step2AMulDivByTwo';
 import { Step2AMulDivByFive } from './Scenes/Step2A/Step2AMulDivByFive';
+import { Step2AMulDivByTen } from './Scenes/Step2A/Step2AMulDivByTen';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
 
@@ -115,6 +116,14 @@ export default class BF extends Component {
             />}/>
         <Route path="/step2a/muldivbyfive" render={() =>
           <Step2AMulDivByFive
+            reload={this.reload}
+            renderResults={this.renderResults}
+            submitHandler={this.submitHandler}
+            handleChange={this.handleChange}
+            actionButtons={this.actionButtons}
+            />}/>
+        <Route path="/step2a/muldivbyten" render={() =>
+          <Step2AMulDivByTen
             reload={this.reload}
             renderResults={this.renderResults}
             submitHandler={this.submitHandler}

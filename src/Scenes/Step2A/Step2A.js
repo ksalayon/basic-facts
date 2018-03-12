@@ -26,6 +26,13 @@ class Step2A extends Component {
             <Link to="/step2a/muldivbyfive">Go</Link>
 
           </li>
+          <li>
+            <p>Multiplication/Division facts for 10's</p>
+            <p>e.g 5 x 10 = __</p>
+            <p>e.g 50 / 10 = __</p>
+            <Link to="/step2a/muldivbyten">Go</Link>
+
+          </li>
         </ul>
       </div>
     );

@@ -4,7 +4,7 @@ import { EquationService as es} from '../../Services/EquationService';
 import { Equation } from '../../Components/Equation/Equation';
 import Utils from '../../Services/Utils';
 
-class Step2AMulDivByFive extends Component {
+class Step2AMulDivByTen extends Component {
 
   componentWillMount(){
     this.init();
@@ -12,7 +12,7 @@ class Step2AMulDivByFive extends Component {
 
   init() {
 
-    var divisor = 5;
+    var divisor = 10;
     var limit = 100;
     var numberOfItems = 10;
 
@@ -106,4 +106,4 @@ class Step2AMulDivByFive extends Component {
   }
 }
 
-export { Step2AMulDivByFive };
+export { Step2AMulDivByTen };
