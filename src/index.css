@@ -37,8 +37,28 @@ ul.h-menu li {
 
 .step-menu {
     float:left;
-    width:50%;
+    width:100%;
     clear:left;
+}
+
+.step-menu ul {
+    list-style: none;
+    padding: 0;
+    width: 50%;
+    float: left;
+}
+
+.step-menu ul li {
+
+    padding: 10px;
+    background-color:#54b9e4;
+    color:#FFF;
+    margin: 10px;
+}
+
+.step-menu ul li.selected {
+    background-color: #acd8eb;
+    color:#172157;
 }
 
 .step-items {
@@ -65,23 +85,4 @@ ul.h-menu li {
     padding:5px 10px;
     background-color: #66b67a;
     color:#FFF;
-}
-.step-menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.step-menu ul li {
-
-    padding: 10px;
-    /* margin-right: 20px; */
-    background-color:#54b9e4;
-    color:#FFF;
-    margin: 10px;
-
-}
-
-.step-menu ul li.selected {
-    background-color: #acd8eb;
-    color:#172157;
 }

@@ -143,7 +143,14 @@ export default class BF extends Component {
             handleChange={this.handleChange}
             actionButtons={this.actionButtons}
             />}/>
-        <Route path="/step2b" component={Step2B} />
+        <Route path="/step2b" render={() =>
+          <Step2B
+            reload={this.reload}
+            renderResults={this.renderResults}
+            submitHandler={this.submitHandler}
+            handleChange={this.handleChange}
+            actionButtons={this.actionButtons}
+            />}/>
         <Route path="/settings" component={BFSetttings} />
       </div>
     );

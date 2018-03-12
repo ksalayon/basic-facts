@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 class Step2A extends Component {
 
   handleClick = (e) => {
-    // e.preventDefault();
     var menu = document.getElementById('Step2AList');
     const lis = menu.querySelectorAll("ul li");
     [...lis].forEach(function(el){
