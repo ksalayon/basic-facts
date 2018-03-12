@@ -7,9 +7,9 @@ import { Step2AGroups } from './Scenes/Step2A/Step2AGroups';
 import { Step2AMulDivByTwo } from './Scenes/Step2A/Step2AMulDivByTwo';
 import { Step2AMulDivByFive } from './Scenes/Step2A/Step2AMulDivByFive';
 import { Step2AMulDivByTen } from './Scenes/Step2A/Step2AMulDivByTen';
+import { Step2AGroupsHundreds } from './Scenes/Step2A/Step2AGroupsHundreds';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
-
 import { ResultDisplay } from './Components/ResultDisplay';
 
 export default class BF extends Component {
@@ -63,7 +63,6 @@ export default class BF extends Component {
   }
 
   reload() {
-    console.log('this at reload: ', this);
     this.init();
   }
 
@@ -80,26 +79,28 @@ export default class BF extends Component {
   render = () => {
     return (
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/step2a">Step 2 A</Link>
-          </li>
-          <li>
-            <Link to="/step2b">Step 2 B</Link>
-          </li>
-          <li>
-            <Link to="/settings">Settings</Link>
-          </li>
-        </ul>
-        <hr />
+        <div>
+          <ul className="h-menu">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/step2a">Step 2 A</Link>
+            </li>
+            <li>
+              <Link to="/step2b">Step 2 B</Link>
+            </li>
+            <li>
+              <Link to="/settings">Settings</Link>
+            </li>
+          </ul>
+        </div>
 
         <Route exact path="/" render={() => <Home/>} />
         <Route path="/step2a" component={Step2A} />
         <Route path="/step2a/groups" render={() =>
           <Step2AGroups
+            title="Groups within 100 using 5's"
             reload={this.reload}
             renderResults={this.renderResults}
             submitHandler={this.submitHandler}
@@ -108,6 +109,7 @@ export default class BF extends Component {
             />}/>
         <Route path="/step2a/muldivbytwo" render={() =>
           <Step2AMulDivByTwo
+            title="Multiplication/Division facts for 2's"
             reload={this.reload}
             renderResults={this.renderResults}
             submitHandler={this.submitHandler}
@@ -116,6 +118,7 @@ export default class BF extends Component {
             />}/>
         <Route path="/step2a/muldivbyfive" render={() =>
           <Step2AMulDivByFive
+            title="Multiplication/Division facts for 5's"
             reload={this.reload}
             renderResults={this.renderResults}
             submitHandler={this.submitHandler}
@@ -124,6 +127,16 @@ export default class BF extends Component {
             />}/>
         <Route path="/step2a/muldivbyten" render={() =>
           <Step2AMulDivByTen
+            title="Multiplication/Division facts for 10's"
+            reload={this.reload}
+            renderResults={this.renderResults}
+            submitHandler={this.submitHandler}
+            handleChange={this.handleChange}
+            actionButtons={this.actionButtons}
+            />}/>
+        <Route path="/step2a/groups-hundreds" render={() =>
+          <Step2AGroupsHundreds
+            title="Addition Groups within 1000"
             reload={this.reload}
             renderResults={this.renderResults}
             submitHandler={this.submitHandler}

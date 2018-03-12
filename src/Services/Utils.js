@@ -7,8 +7,18 @@ var Utils = (function() {
       .map(a => a[1]);
   }
 
+  var arrayRanPick = (arr) => {
+    var ran = Math.floor(Math.random() * ((arr.length) - 0));
+    if(typeof arr[ran] === 'object') {
+      return Object.assign({}, arr[ran]);
+    }
+
+    return arr[ran];
+  }
+
   return {
-    shuffleArray: shuffleArray
+    shuffleArray: shuffleArray,
+    arrayRanPick: arrayRanPick
   }
 
 })();

@@ -70,7 +70,8 @@ class Step2AGroups extends Component {
   render() {
 
     return (
-      <div id="Step2AGroup">
+      <div id="Step2AGroups" className="step-items">
+        <h3>{this.props.title}</h3>
         { this.props.renderResults.call(this) }
         <div className="equations">
           { this.renderEquations() }

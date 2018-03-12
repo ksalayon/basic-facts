@@ -5,12 +5,20 @@
     clear:both;
     margin: 5px 0 0 0;
     padding:5px;
+    border: thin solid #DDD;
+    width: 230px;
+}
+
+.equation-component.done {
+    width: 450px;
 }
 
 .equation-component .parts {
     display:block;
     position: relative;
 }
+
+
 
 .equation-component .parts > div {
     display:block;
@@ -24,5 +32,12 @@
 .equation-component .parts .first-operand input,
 .equation-component .parts .second-operand,
 .equation-component .parts .second-operand input {
-    max-width: 30px;
+    max-width: 50px;
+    font-size:18px;
+    /* padding:5px; */
+}
+
+.equation-component input {
+    font-size:18px;
+    max-width: 50px;
 }

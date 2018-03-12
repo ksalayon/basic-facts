@@ -1,64 +1,51 @@
 import React, {Component} from 'react';
-import { MulService } from '../../Services/MulService';
+import { GroupService } from '../../Services/GroupService';
 import { EquationService as es} from '../../Services/EquationService';
 import { Equation } from '../../Components/Equation/Equation';
 import Utils from '../../Services/Utils';
 
-class Step2AMulDivByTen extends Component {
+class Step2AGroupsHundreds extends Component {
 
   componentWillMount(){
     this.init();
   }
 
   init() {
+    var operator = '+';
+    var divisor = 5;
+    var limit = 1000;
+    var numberOfItems = 12;
 
-    var divisor = 10;
-    var limit = 100;
-    var numberOfItems = 10;
 
-    var mItems = MulService.items(divisor, limit, numberOfItems / 2);
+    var divisors = Array.from(Array((numberOfItems + 1)).keys());
 
-    mItems = mItems.map((item, idx) => {
-      item.operator = 'x';
-      item.answer = es.execute(item.firstOperand, item.secondOperand, item.operator);
-      item.expectedInput = item.answer;
-      item.id = item.firstOperand + item.operator + item.secondOperand;
-      return item;
-    });
+    var firstSet = GroupService.items(divisor, 1000, numberOfItems / 3);
+    var secondSet = GroupService.items(divisor, 800, numberOfItems / 3);
+    var thirdSet = GroupService.items(divisor, 500, numberOfItems / 3);
 
-    var divItems = MulService.items(divisor, limit, numberOfItems / 2);
-    divItems = divItems.map((item, idx) => {
-      item.operator = '/';
-
-      var origFO = item.firstOperand;
-      var origSO = item.secondOperand;
-      var origA = es.execute(item.firstOperand, item.secondOperand, 'x');
-      item.firstOperand = origA;
-      item.secondOperand = origSO;
-      item.answer = origFO;
-      item.expectedInput = item.answer;
-      item.id = item.firstOperand + '-div-' + item.secondOperand;
-      return item;
-    });
-
-    var items = mItems.concat(divItems);
-
+    var items = firstSet.concat(secondSet).concat(thirdSet);
     items = Utils.shuffleArray(items);
-
     items = items.map((item, idx) => {
-      item.firstOperandInput = false;
-      item.secondOperandInput = false;
-      item.showAnswer = false;
+      const ran = Math.floor(Math.random() * 2) + 0;
+      item.firstOperandInput = (!ran) ? false : true;
+      item.secondOperandInput = (ran) ? false : true;
+      item.answer = es.execute(item.firstOperand, item.secondOperand, operator);
+      item.expectedInput = (item.firstOperandInput) ? item.firstOperand : item.secondOperand;
+      item.id = item.firstOperand + operator + item.secondOperand;
+      item.showAnswer = true;
+      item.operator = operator;
       item.solved = false;
       item.input = '';
       item.done = false;
       return item;
     });
 
+
     this.setState({
       divisor: divisor,
       limit: limit,
       numberOfItems: numberOfItems,
+      operator: operator,
       items:items,
       numPassed:0,
       numFailed:0,
@@ -79,7 +66,7 @@ class Step2AMulDivByTen extends Component {
         secondOperandInput={item.secondOperandInput}
         operator={item.operator}
         answer={item.answer}
-        showAnswer={item.showAnswer}
+        showAnswer={true}
         input={item.input}
         expectedInput={item.expectedInput}
         solved={item.solved}
@@ -91,7 +78,7 @@ class Step2AMulDivByTen extends Component {
   render() {
 
     return (
-      <div id="Step2AMulDivByTen" className="step-items">
+      <div id="Step2AGroupsHundreds" className="step-items">
         <h3>{this.props.title}</h3>
         { this.props.renderResults.call(this) }
         <div className="equations">
@@ -107,4 +94,4 @@ class Step2AMulDivByTen extends Component {
   }
 }
 
-export { Step2AMulDivByTen };
+export { Step2AGroupsHundreds };

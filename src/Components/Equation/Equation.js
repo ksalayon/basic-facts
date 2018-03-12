@@ -32,7 +32,7 @@ class Equation extends Component {
       if (this.props.solved) {
         successPart = (<div className="result"><span role="img" aria-label="correct">&#x2705;</span></div>)
       } else {
-        successPart = (<div className="result"><span role="img" aria-label="correct">&#x274C;</span> - Correct Answer is {this.props.expectedInput}</div>)
+        successPart = (<div className="result"><span role="img" aria-label="correct">&#x274C;</span> - The answer is {this.props.expectedInput}</div>)
       }
     }
 
@@ -48,7 +48,7 @@ class Equation extends Component {
 
   render() {
     return (
-      <div className="equation-component">
+        <div className={(!this.props.done) ? 'equation-component' : 'equation-component done'}>
         { this.renderParts() }
       </div>
     )

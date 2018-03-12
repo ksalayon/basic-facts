@@ -17,7 +17,7 @@ body {
     font-size: 20px;
 }
 
-.step-menu ul {
+ul.h-menu {
     clear:both;
     display: block;
     position: relative;
@@ -25,7 +25,7 @@ body {
 
 }
 
-.step-menu ul li {
+ul.h-menu li {
     display:block;
     float:left;
     position: relative;
@@ -33,4 +33,55 @@ body {
     margin-right: 20px;
     background-color:#CCC;
 
+}
+
+.step-menu {
+    float:left;
+    width:50%;
+    clear:left;
+}
+
+.step-items {
+    float:left;
+    width:50%;
+    font-size: 20px;
+}
+
+.step-items .equations, .step-items .actions {
+    display:block;;
+    position:relative;
+}
+
+.step-items .equations {
+    overflow: auto;
+}
+.step-items .actions {
+    margin:10px 0;
+    font-size:18px;
+}
+
+.step-items .actions button {
+    font-size:18px;
+    padding:5px 10px;
+    background-color: #66b67a;
+    color:#FFF;
+}
+.step-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.step-menu ul li {
+
+    padding: 10px;
+    /* margin-right: 20px; */
+    background-color:#54b9e4;
+    color:#FFF;
+    margin: 10px;
+
+}
+
+.step-menu ul li.selected {
+    background-color: #acd8eb;
+    color:#172157;
 }
