@@ -18,8 +18,6 @@ var BFService = (function(){
   function randomPairs(operands, min, max, numberOfItems) {
     min = Math.ceil(min);
     var maxPlus = (Math.floor(max) + 1);
-
-
     for(let i = 0; i <= numberOfItems; i++) {
       var tmpItems = [...items];
       if(tmpItems.length >= numberOfItems){

@@ -145,7 +145,6 @@ export default class BF extends Component {
             />}/>
         <Route path="/step2b" render={() =>
           <Step2B
-            reload={this.reload}
             renderResults={this.renderResults}
             submitHandler={this.submitHandler}
             handleChange={this.handleChange}
