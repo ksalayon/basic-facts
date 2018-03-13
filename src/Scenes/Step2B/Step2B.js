@@ -160,77 +160,79 @@ class Step2B extends Component {
             <Link to="/step2b/muldivbyeight" onClick={this.handleClick}>Go</Link>
           </li>
         </ul>
+        <div className="steps">
+          <Route path="/step2b/muldivbythree" render={() =>
+            <MulDivByThree
+              id="MulDivByThree"
+              title="Multiplication/Division facts for 3's"
+              div={3}
+              limit={(3 * 12)}
+              numberOfItems={12}
+              renderResults={this.props.renderResults}
+              submitHandler={this.props.submitHandler}
+              handleChange={this.props.handleChange}
+              actionButtons={this.actionButtons}
+              init={this.init}
+              renderEquations={this.renderEquations}
+              />}/>
+          <Route path="/step2b/muldivbyfour" render={() =>
+            <MulDivByFour
+              id="MulDivByFour"
+              title="Multiplication/Division facts for 4's"
+              div={4}
+              limit={(4 * 12)}
+              numberOfItems={12}
+              renderResults={this.props.renderResults}
+              submitHandler={this.props.submitHandler}
+              handleChange={this.props.handleChange}
+              actionButtons={this.actionButtons}
+              init={this.init}
+              renderEquations={this.renderEquations}
+              />}/>
+          <Route path="/step2b/muldivbysix" render={() =>
+            <MulDivBySix
+              id="MulDivBySix"
+              title="Multiplication/Division facts for 6's"
+              div={6}
+              limit={(6 * 12)}
+              numberOfItems={12}
+              renderResults={this.props.renderResults}
+              submitHandler={this.props.submitHandler}
+              handleChange={this.props.handleChange}
+              actionButtons={this.actionButtons}
+              init={this.init}
+              renderEquations={this.renderEquations}
+              />}/>
+          <Route path="/step2b/muldivbyseven" render={() =>
+            <MulDivBySeven
+              id="MulDivBySeven"
+              title="Multiplication/Division facts for 7's"
+              div={7}
+              limit={(7 * 12)}
+              numberOfItems={12}
+              renderResults={this.props.renderResults}
+              submitHandler={this.props.submitHandler}
+              handleChange={this.props.handleChange}
+              actionButtons={this.actionButtons}
+              init={this.init}
+              renderEquations={this.renderEquations}
+              />}/>
+          <Route path="/step2b/muldivbyeight" render={() =>
+            <MulDivByEight
+              id="MulDivByEight"
+              title="Multiplication/Division facts for 8's"
+              div={8}
+              limit={(8 * 12)}
+              numberOfItems={12}
+              renderResults={this.props.renderResults}
+              submitHandler={this.props.submitHandler}
+              handleChange={this.props.handleChange}
+              actionButtons={this.actionButtons}
+              init={this.init}
+              renderEquations={this.renderEquations}
+              />}/>
+        </div>
 
-        <Route path="/step2b/muldivbythree" render={() =>
-          <MulDivByThree
-            id="MulDivByThree"
-            title="Multiplication/Division facts for 3's"
-            div={3}
-            limit={(3 * 12)}
-            numberOfItems={12}
-            renderResults={this.props.renderResults}
-            submitHandler={this.props.submitHandler}
-            handleChange={this.props.handleChange}
-            actionButtons={this.actionButtons}
-            init={this.init}
-            renderEquations={this.renderEquations}
-            />}/>
-        <Route path="/step2b/muldivbyfour" render={() =>
-          <MulDivByFour
-            id="MulDivByFour"
-            title="Multiplication/Division facts for 4's"
-            div={4}
-            limit={(4 * 12)}
-            numberOfItems={12}
-            renderResults={this.props.renderResults}
-            submitHandler={this.props.submitHandler}
-            handleChange={this.props.handleChange}
-            actionButtons={this.actionButtons}
-            init={this.init}
-            renderEquations={this.renderEquations}
-            />}/>
-        <Route path="/step2b/muldivbysix" render={() =>
-          <MulDivBySix
-            id="MulDivBySix"
-            title="Multiplication/Division facts for 6's"
-            div={6}
-            limit={(6 * 12)}
-            numberOfItems={12}
-            renderResults={this.props.renderResults}
-            submitHandler={this.props.submitHandler}
-            handleChange={this.props.handleChange}
-            actionButtons={this.actionButtons}
-            init={this.init}
-            renderEquations={this.renderEquations}
-            />}/>
-        <Route path="/step2b/muldivbyseven" render={() =>
-          <MulDivBySeven
-            id="MulDivBySeven"
-            title="Multiplication/Division facts for 7's"
-            div={7}
-            limit={(7 * 12)}
-            numberOfItems={12}
-            renderResults={this.props.renderResults}
-            submitHandler={this.props.submitHandler}
-            handleChange={this.props.handleChange}
-            actionButtons={this.actionButtons}
-            init={this.init}
-            renderEquations={this.renderEquations}
-            />}/>
-        <Route path="/step2b/muldivbyeight" render={() =>
-          <MulDivByEight
-            id="MulDivByEight"
-            title="Multiplication/Division facts for 8's"
-            div={8}
-            limit={(8 * 12)}
-            numberOfItems={12}
-            renderResults={this.props.renderResults}
-            submitHandler={this.props.submitHandler}
-            handleChange={this.props.handleChange}
-            actionButtons={this.actionButtons}
-            init={this.init}
-            renderEquations={this.renderEquations}
-            />}/>
       </div>
     );
   }
