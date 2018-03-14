@@ -50,10 +50,10 @@ ul.h-menu li {
 
 .step-menu ul li {
 
-    padding: 10px;
+    /* padding: 10px;
     background-color:#54b9e4;
     color:#FFF;
-    margin: 10px;
+    margin: 10px; */
 }
 
 .step-menu ul li.selected {

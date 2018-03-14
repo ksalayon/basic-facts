@@ -13,5 +13,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "semantic-ui": "^2.3.0",
+    "semantic-ui-react": "^0.78.3"
   }
 }
