@@ -4,6 +4,7 @@ import { EquationService as es} from '../../Services/EquationService';
 import { Equation } from '../../Components/Equation/Equation';
 import Utils from '../../Services/Utils';
 import { MulService } from '../../Services/MulService';
+import BFSource from '../../Services/Datasource/BFSource';
 import { MulDivByThree } from './MulDivByThree';
 import { MulDivByFour } from './MulDivByFour';
 import { MulDivBySix } from './MulDivBySix';
@@ -17,98 +18,7 @@ class Step2B extends Component {
 
   constructor(props) {
     super(props);
-    this.stepList = {
-        linkHandler: this.handleClick,
-        renderResults: this.props.renderResults,
-        submitHandler: this.props.submitHandler,
-        handleChange: this.props.handleChange,
-        actionButtons: this.actionButtons,
-        init: this.init,
-        renderEquations: this.renderEquations,
-        steps:[
-          {
-            id: 'MulDivByThree',
-            comp: MulDivByThree,
-            div: 3,
-            limit: (3 * 12),
-            numberOfItems: 12,
-            header: 'Multiplication/Division facts for 3\'s',
-            content: (
-                <div>
-                  <p>e.g.</p>
-                  <p>3 x 2 = __</p>
-                  <p>21 / 3 = __</p>
-                </div>
-              ),
-            link:'/step2b/muldivbythree'
-          },
-          {
-            id: 'MulDivByFour',
-            comp: MulDivByFour,
-            div: 4,
-            limit: (4 * 12),
-            numberOfItems: 12,
-            header: 'Multiplication/Division facts for 4\'s',
-            content: (
-                <div>
-                  <p>e.g.</p>
-                  <p>3 x 4 = __</p>
-                  <p>16 / 4 = __</p>
-                </div>
-              ),
-            link:'/step2b/muldivbyfour'
-          },
-          {
-            id: 'MulDivBySix',
-            comp: MulDivBySix,
-            div: 6,
-            limit: (6 * 12),
-            numberOfItems: 12,
-            header: 'Multiplication/Division facts for 6\'s',
-            content: (
-                <div>
-                  <p>e.g.</p>
-                  <p>6 x 2 = __</p>
-                  <p>42 / 6 = __</p>
-                </div>
-              ),
-            link:'/step2b/muldivbysix'
-          },
-          {
-            id: 'MulDivBySeven',
-            comp: MulDivBySeven,
-            div: 7,
-            limit: (7 * 12),
-            numberOfItems: 12,
-            header: 'Multiplication/Division facts for 7\'s',
-            content: (
-                <div>
-                  <p>e.g.</p>
-                  <p>7 x 4 = __</p>
-                  <p>28 / 7 = __</p>
-                </div>
-              ),
-            link:'/step2b/muldivbyseven'
-          },
-          {
-            id: 'MulDivByEight',
-            comp: MulDivByEight,
-            div: 8,
-            limit: (8 * 12),
-            numberOfItems: 12,
-            header: 'Multiplication/Division facts for 8\'s',
-            content: (
-              <div>
-                <p>e.g.</p>
-                <p>8 x 4 = __</p>
-                <p>40 / 8 = __</p>
-              </div>
-              ),
-            link:'/step2b/muldivbyeight'
-          }
-        ]
-
-      };
+    this.stepList = BFSource.step2bItems;
   }
   handleClick = (e) => {
     var menu = document.getElementById('Step2BList');
@@ -219,9 +129,6 @@ class Step2B extends Component {
 
   render() {
 
-    const containerColumn = 2;
-    const carColumns = 3;
-
     return (
       <Segment className="step-menu" id="Step2BList">
         <Header>This is the Step 2B Stage - Good Luck!</Header>
@@ -230,7 +137,7 @@ class Step2B extends Component {
             <Grid.Row stretched>
               <Grid columns={3}>
               {
-                this.stepList.steps.map((step, idx) => {
+                this.stepList.map((step, idx) => {
                   return <Grid.Column key={step.id}>
                     <Card>
                       <Card.Content header={step.header} />
@@ -238,7 +145,7 @@ class Step2B extends Component {
                         {step.content}
                       </Card.Content>
                       <Card.Content extra>
-                        <Link to={step.link} onClick={this.stepList.linkHandler}>Go</Link>
+                        <Link to={step.link} onClick={this.handleClick}>Go</Link>
                       </Card.Content>
                     </Card>
                   </Grid.Column>
@@ -251,7 +158,7 @@ class Step2B extends Component {
           <Grid.Column>
             <Segment className="steps">
               {
-                this.stepList.steps.map((step, idx) => {
+                this.stepList.map((step, idx) => {
                   return <Route path={step.link} key={step.id} render={() =>
                     <Segment as={step.comp}
                       id={step.id}
