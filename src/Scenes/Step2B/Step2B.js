@@ -9,6 +9,9 @@ import { MulDivByFour } from './MulDivByFour';
 import { MulDivBySix } from './MulDivBySix';
 import { MulDivBySeven } from './MulDivBySeven';
 import { MulDivByEight } from './MulDivByEight';
+import {
+  Segment
+} from 'semantic-ui-react';
 
 class Step2B extends Component {
 
@@ -121,7 +124,7 @@ class Step2B extends Component {
 
   render() {
     return (
-      <div className="step-menu" id="Step2BList">
+      <Segment className="step-menu" id="Step2BList">
         <h3>This is the Step 2B Stage - Good Luck!</h3>
         <ul>
           <li>
@@ -233,7 +236,7 @@ class Step2B extends Component {
               />}/>
         </div>
 
-      </div>
+      </Segment>
     );
   }
 }

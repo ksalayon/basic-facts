@@ -143,7 +143,7 @@ export default class BF extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Segment>
+        <Container fluid>
           <Route exact path="/" render={() => <Home/>} />
           <Route path="/step2a" render={() =>
             <Step2A
@@ -160,7 +160,7 @@ export default class BF extends Component {
               handleChange={this.handleChange}
               />}/>
           <Route path="/settings" component={BFSetttings} />
-        </Segment>
+        </Container>
 
       </div>
     );
