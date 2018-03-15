@@ -177,23 +177,31 @@ class Step2B extends Component {
   renderEquations(){
     var items = [...this.state.items];
 
-    return items.map((item, idx) => {
-      return <Equation
-        key={item.id}
-        id={item.id}
-        firstOperand={item.firstOperand}
-        firstOperandInput={item.firstOperandInput}
-        secondOperand={item.secondOperand}
-        secondOperandInput={item.secondOperandInput}
-        operator={item.operator}
-        answer={item.answer}
-        showAnswer={item.showAnswer}
-        input={item.input}
-        expectedInput={item.expectedInput}
-        solved={item.solved}
-        done={item.done}
-        onChange={this.props.handleChange.bind(this)} />
-    });
+    return <Grid columns={2}>
+    {
+      items.map((item, idx) => {
+        return <Grid.Column key={item.id}>
+          <Grid.Row>
+            <Equation
+              key={item.id}
+              id={item.id}
+              firstOperand={item.firstOperand}
+              firstOperandInput={item.firstOperandInput}
+              secondOperand={item.secondOperand}
+              secondOperandInput={item.secondOperandInput}
+              operator={item.operator}
+              answer={item.answer}
+              showAnswer={item.showAnswer}
+              input={item.input}
+              expectedInput={item.expectedInput}
+              solved={item.solved}
+              done={item.done}
+              onChange={this.props.handleChange.bind(this)} />
+            </Grid.Row>
+          </Grid.Column>
+      })
+    }
+    </Grid>
   }
 
   reload() {
