@@ -10,11 +10,106 @@ import { MulDivBySix } from './MulDivBySix';
 import { MulDivBySeven } from './MulDivBySeven';
 import { MulDivByEight } from './MulDivByEight';
 import {
-  Segment
+  Card, Header, Segment, Grid
 } from 'semantic-ui-react';
 
 class Step2B extends Component {
 
+  constructor(props) {
+    super(props);
+    this.stepList = {
+        linkHandler: this.handleClick,
+        renderResults: this.props.renderResults,
+        submitHandler: this.props.submitHandler,
+        handleChange: this.props.handleChange,
+        actionButtons: this.actionButtons,
+        init: this.init,
+        renderEquations: this.renderEquations,
+        steps:[
+          {
+            id: 'MulDivByThree',
+            comp: MulDivByThree,
+            div: 3,
+            limit: (3 * 12),
+            numberOfItems: 12,
+            header: 'Multiplication/Division facts for 3\'s',
+            content: (
+                <div>
+                  <p>e.g.</p>
+                  <p>3 x 2 = __</p>
+                  <p>21 / 3 = __</p>
+                </div>
+              ),
+            link:'/step2b/muldivbythree'
+          },
+          {
+            id: 'MulDivByFour',
+            comp: MulDivByFour,
+            div: 4,
+            limit: (4 * 12),
+            numberOfItems: 12,
+            header: 'Multiplication/Division facts for 4\'s',
+            content: (
+                <div>
+                  <p>e.g.</p>
+                  <p>3 x 4 = __</p>
+                  <p>16 / 4 = __</p>
+                </div>
+              ),
+            link:'/step2b/muldivbyfour'
+          },
+          {
+            id: 'MulDivBySix',
+            comp: MulDivBySix,
+            div: 6,
+            limit: (6 * 12),
+            numberOfItems: 12,
+            header: 'Multiplication/Division facts for 6\'s',
+            content: (
+                <div>
+                  <p>e.g.</p>
+                  <p>6 x 2 = __</p>
+                  <p>42 / 6 = __</p>
+                </div>
+              ),
+            link:'/step2b/muldivbysix'
+          },
+          {
+            id: 'MulDivBySeven',
+            comp: MulDivBySeven,
+            div: 7,
+            limit: (7 * 12),
+            numberOfItems: 12,
+            header: 'Multiplication/Division facts for 7\'s',
+            content: (
+                <div>
+                  <p>e.g.</p>
+                  <p>7 x 4 = __</p>
+                  <p>28 / 7 = __</p>
+                </div>
+              ),
+            link:'/step2b/muldivbyseven'
+          },
+          {
+            id: 'MulDivByEight',
+            comp: MulDivByEight,
+            div: 8,
+            limit: (8 * 12),
+            numberOfItems: 12,
+            header: 'Multiplication/Division facts for 8\'s',
+            content: (
+              <div>
+                <p>e.g.</p>
+                <p>8 x 4 = __</p>
+                <p>40 / 8 = __</p>
+              </div>
+              ),
+            link:'/step2b/muldivbyeight'
+          }
+        ]
+
+      };
+  }
   handleClick = (e) => {
     var menu = document.getElementById('Step2BList');
     const lis = menu.querySelectorAll("ul li");
@@ -26,13 +121,9 @@ class Step2B extends Component {
   }
 
   init() {
-    // console.log('divisor: ', div);
     var divisor = this.props.div;
     var limit = this.props.limit;
     var numberOfItems = this.props.numberOfItems;
-    // console.log('divisor: ', divisor);
-    // console.log('limit: ', limit);
-    // console.log('numberOfItems: ', numberOfItems);
     var mItems = MulService.items(divisor, limit, numberOfItems / 2);
 
     mItems = mItems.map((item, idx) => {
@@ -83,10 +174,6 @@ class Step2B extends Component {
     });
   }
 
-  // reload(div) {
-  //   this.props.init(div);
-  // }
-
   renderEquations(){
     var items = [...this.state.items];
 
@@ -123,118 +210,61 @@ class Step2B extends Component {
   }
 
   render() {
+
+    const containerColumn = 2;
+    const carColumns = 3;
+
     return (
       <Segment className="step-menu" id="Step2BList">
-        <h3>This is the Step 2B Stage - Good Luck!</h3>
-        <ul>
-          <li>
-            <p>Multiplication/Division facts for 3's</p>
-            <p>e.g.</p>
-            <p>3 x 2 = __</p>
-            <p>21 / 3 = __</p>
-            <Link to="/step2b/muldivbythree" onClick={this.handleClick}>Go</Link>
-          </li>
-          <li>
-            <p>Multiplication/Division facts for 4's</p>
-            <p>e.g.</p>
-            <p>3 x 4 = __</p>
-            <p>16 / 4 = __</p>
-            <Link to="/step2b/muldivbyfour" onClick={this.handleClick}>Go</Link>
-          </li>
-          <li>
-            <p>Multiplication/Division facts for 6's</p>
-            <p>e.g.</p>
-            <p>6 x 2 = __</p>
-            <p>42 / 6 = __</p>
-            <Link to="/step2b/muldivbysix" onClick={this.handleClick}>Go</Link>
-          </li>
-          <li>
-            <p>Multiplication/Division facts for 7's</p>
-            <p>e.g.</p>
-            <p>7 x 4 = __</p>
-            <p>28 / 7 = __</p>
-            <Link to="/step2b/muldivbyseven" onClick={this.handleClick}>Go</Link>
-          </li>
-          <li>
-            <p>Multiplication/Division facts for 8's</p>
-            <p>e.g.</p>
-            <p>8 x 4 = __</p>
-            <p>40 / 8 = __</p>
-            <Link to="/step2b/muldivbyeight" onClick={this.handleClick}>Go</Link>
-          </li>
-        </ul>
-        <div className="steps">
-          <Route path="/step2b/muldivbythree" render={() =>
-            <MulDivByThree
-              id="MulDivByThree"
-              title="Multiplication/Division facts for 3's"
-              div={3}
-              limit={(3 * 12)}
-              numberOfItems={12}
-              renderResults={this.props.renderResults}
-              submitHandler={this.props.submitHandler}
-              handleChange={this.props.handleChange}
-              actionButtons={this.actionButtons}
-              init={this.init}
-              renderEquations={this.renderEquations}
-              />}/>
-          <Route path="/step2b/muldivbyfour" render={() =>
-            <MulDivByFour
-              id="MulDivByFour"
-              title="Multiplication/Division facts for 4's"
-              div={4}
-              limit={(4 * 12)}
-              numberOfItems={12}
-              renderResults={this.props.renderResults}
-              submitHandler={this.props.submitHandler}
-              handleChange={this.props.handleChange}
-              actionButtons={this.actionButtons}
-              init={this.init}
-              renderEquations={this.renderEquations}
-              />}/>
-          <Route path="/step2b/muldivbysix" render={() =>
-            <MulDivBySix
-              id="MulDivBySix"
-              title="Multiplication/Division facts for 6's"
-              div={6}
-              limit={(6 * 12)}
-              numberOfItems={12}
-              renderResults={this.props.renderResults}
-              submitHandler={this.props.submitHandler}
-              handleChange={this.props.handleChange}
-              actionButtons={this.actionButtons}
-              init={this.init}
-              renderEquations={this.renderEquations}
-              />}/>
-          <Route path="/step2b/muldivbyseven" render={() =>
-            <MulDivBySeven
-              id="MulDivBySeven"
-              title="Multiplication/Division facts for 7's"
-              div={7}
-              limit={(7 * 12)}
-              numberOfItems={12}
-              renderResults={this.props.renderResults}
-              submitHandler={this.props.submitHandler}
-              handleChange={this.props.handleChange}
-              actionButtons={this.actionButtons}
-              init={this.init}
-              renderEquations={this.renderEquations}
-              />}/>
-          <Route path="/step2b/muldivbyeight" render={() =>
-            <MulDivByEight
-              id="MulDivByEight"
-              title="Multiplication/Division facts for 8's"
-              div={8}
-              limit={(8 * 12)}
-              numberOfItems={12}
-              renderResults={this.props.renderResults}
-              submitHandler={this.props.submitHandler}
-              handleChange={this.props.handleChange}
-              actionButtons={this.actionButtons}
-              init={this.init}
-              renderEquations={this.renderEquations}
-              />}/>
-        </div>
+        <Header>This is the Step 2B Stage - Good Luck!</Header>
+        <Grid columns={2}>
+          <Grid.Column>
+            <Grid.Row stretched>
+              <Grid columns={3}>
+              {
+                this.stepList.steps.map((step, idx) => {
+                  return <Grid.Column key={step.id}>
+                    <Card>
+                      <Card.Content header={step.header} />
+                      <Card.Content>
+                        {step.content}
+                      </Card.Content>
+                      <Card.Content extra>
+                        <Link to={step.link} onClick={this.stepList.linkHandler}>Go</Link>
+                      </Card.Content>
+                    </Card>
+                  </Grid.Column>
+                })
+              }
+              </Grid>
+            </Grid.Row>
+          </Grid.Column>
+
+          <Grid.Column>
+            <Segment className="steps">
+              {
+                this.stepList.steps.map((step, idx) => {
+                  return <Route path={step.link} key={step.id} render={() =>
+                    <Segment as={step.comp}
+                      id={step.id}
+                      title={step.header}
+                      div={step.div}
+                      limit={step.limit}
+                      numberOfItems={step.numberOfItems}
+                      renderResults={this.props.renderResults}
+                      submitHandler={this.props.submitHandler}
+                      handleChange={this.props.handleChange}
+                      actionButtons={this.actionButtons}
+                      init={this.init}
+                      renderEquations={this.renderEquations}
+                      />}/>
+                })
+              }
+            </Segment>
+          </Grid.Column>
+        </Grid>
+
+
 
       </Segment>
     );
