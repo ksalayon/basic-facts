@@ -11,7 +11,7 @@ import { MulDivBySix } from './MulDivBySix';
 import { MulDivBySeven } from './MulDivBySeven';
 import { MulDivByEight } from './MulDivByEight';
 import {
-  Card, Header, Segment, Grid
+  Card, Header, Segment, Grid, Button
 } from 'semantic-ui-react';
 
 class Step2B extends Component {
@@ -84,45 +84,15 @@ class Step2B extends Component {
     });
   }
 
-  renderEquations(){
-    var items = [...this.state.items];
-
-    return <Grid columns={2}>
-    {
-      items.map((item, idx) => {
-        return <Grid.Column key={item.id}>
-          <Grid.Row>
-            <Equation
-              key={item.id}
-              id={item.id}
-              firstOperand={item.firstOperand}
-              firstOperandInput={item.firstOperandInput}
-              secondOperand={item.secondOperand}
-              secondOperandInput={item.secondOperandInput}
-              operator={item.operator}
-              answer={item.answer}
-              showAnswer={item.showAnswer}
-              input={item.input}
-              expectedInput={item.expectedInput}
-              solved={item.solved}
-              done={item.done}
-              onChange={this.props.handleChange.bind(this)} />
-            </Grid.Row>
-          </Grid.Column>
-      })
-    }
-    </Grid>
-  }
-
   reload() {
     this.props.init(this.props.div);
   }
   actionButtons(){
     var btn;
     if(!this.state.submitted) {
-      btn = (<button className="submit" onClick={this.props.submitHandler.bind(this)}>Submit</button>);
+      btn = (<Button className="submit" onClick={this.props.submitHandler.bind(this)}>Submit</Button>);
     } else {
-      btn = (<button className="submit" onClick={this.props.init.bind(this)}>Reload</button>);
+      btn = (<Button className="submit" onClick={this.props.init.bind(this)}>Reload</Button>);
     }
     return btn;
   }
@@ -171,7 +141,7 @@ class Step2B extends Component {
                       handleChange={this.props.handleChange}
                       actionButtons={this.actionButtons}
                       init={this.init}
-                      renderEquations={this.renderEquations}
+                      renderEquations={this.props.renderEquations}
                       />}/>
                 })
               }

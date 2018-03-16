@@ -6,6 +6,7 @@ import { Step2A } from './Scenes/Step2A/Step2A';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
 import { ResultDisplay } from './Components/ResultDisplay';
+import { Equation } from './Components/Equation/Equation';
 import {
   Button, Container, Grid, Header, Icon, Image, Item, Label, Menu, Segment, Step, Table, Tab
 } from 'semantic-ui-react';
@@ -15,7 +16,7 @@ export default class BF extends Component {
   handleChange(e, id) {
 
     var val = parseInt(e.target.value, 10);
-
+    val  = (val !== val) ? '' : val;
     var items = [...this.state.items];
     items = items.map((item, index) => {
       if(item.id === id) {
@@ -65,6 +66,36 @@ export default class BF extends Component {
     this.init();
   }
 
+  renderEquations(){
+    var items = [...this.state.items];
+
+    return <Grid columns={2}>
+    {
+      items.map((item, idx) => {
+        return <Grid.Column key={item.id}>
+          <Grid.Row>
+            <Equation
+              key={item.id}
+              id={item.id}
+              firstOperand={item.firstOperand}
+              firstOperandInput={item.firstOperandInput}
+              secondOperand={item.secondOperand}
+              secondOperandInput={item.secondOperandInput}
+              operator={item.operator}
+              answer={item.answer}
+              showAnswer={item.showAnswer}
+              input={item.input}
+              expectedInput={item.expectedInput}
+              solved={item.solved}
+              done={item.done}
+              onChange={this.props.handleChange.bind(this)} />
+            </Grid.Row>
+          </Grid.Column>
+      })
+    }
+    </Grid>
+  }
+
   actionButtons(){
     var btn;
     if(!this.state.submitted) {
@@ -76,68 +107,12 @@ export default class BF extends Component {
   }
 
   render = () => {
-
-    // const panes = [
-    //   { menuItem: 'Home', render: () => <Tab.Pane as={ Link } to="/" ><Route exact path="/" render={() => <Home/>} /></Tab.Pane> },
-    //   { menuItem: 'Step 2 A', render: () => <Tab.Pane  as={ Link } to="/step2a" ><Route path="/step2a" render={() =>
-    //     <Step2A
-    //       renderResults={this.renderResults}
-    //       submitHandler={this.submitHandler}
-    //       handleChange={this.handleChange}
-    //       actionButtons={this.actionButtons}
-    //       reload={this.reload}
-    //       />}/></Tab.Pane> },
-    //   { menuItem: 'Step 2 B', render: () => <Tab.Pane as={ Link } to="/step2b" ><Route path="/step2b" render={() =>
-    //     <Step2B
-    //       renderResults={this.renderResults}
-    //       submitHandler={this.submitHandler}
-    //       handleChange={this.handleChange}
-    //       />}/></Tab.Pane> },
-    // ];
-
     return (
       <div>
-        {/* <div>
-          <ul className="h-menu">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/step2a">Step 2 A</Link>
-            </li>
-            <li>
-              <Link to="/step2b">Step 2 B</Link>
-            </li>
-            <li>
-              <Link to="/settings">Settings</Link>
-            </li>
-          </ul>
-        </div> */}
-
-        {/* <Tab menu={{ secondary: true, pointing: true }} panes={panes} /> */}
-
-        {/* <Route exact path="/" render={() => <Home/>} />
-        <Route path="/step2a" render={() =>
-          <Step2A
-            renderResults={this.renderResults}
-            submitHandler={this.submitHandler}
-            handleChange={this.handleChange}
-            actionButtons={this.actionButtons}
-            reload={this.reload}
-            />}/>
-        <Route path="/step2b" render={() =>
-          <Step2B
-            renderResults={this.renderResults}
-            submitHandler={this.submitHandler}
-            handleChange={this.handleChange}
-            />}/>
-        <Route path="/settings" component={BFSetttings} /> */}
-
-
         <Menu pointing>
           <Menu.Item name='home' as={Link} to="/" />
           <Menu.Item name='step2a' as={Link} to="/step2a" />
-          <Menu.Item name='step2a' as={Link} to="/step2b" />
+          <Menu.Item name='step2b' as={Link} to="/step2b" />
           <Menu.Menu position='right'>
             <Menu.Item name='settings' as={Link} to="/settings" />
           </Menu.Menu>
@@ -152,12 +127,14 @@ export default class BF extends Component {
               handleChange={this.handleChange}
               actionButtons={this.actionButtons}
               reload={this.reload}
+              renderEquations={this.renderEquations}
               />}/>
           <Route path="/step2b" render={() =>
             <Step2B
               renderResults={this.renderResults}
               submitHandler={this.submitHandler}
               handleChange={this.handleChange}
+              renderEquations={this.renderEquations}
               />}/>
           <Route path="/settings" component={BFSetttings} />
         </Container>

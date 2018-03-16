@@ -3,6 +3,9 @@ import { MulService } from '../../Services/MulService';
 import { EquationService as es} from '../../Services/EquationService';
 import { Equation } from '../../Components/Equation/Equation';
 import Utils from '../../Services/Utils';
+import {
+  Segment, Divider
+} from 'semantic-ui-react';
 
 class Step2AMulDivByTen extends Component {
 
@@ -66,40 +69,21 @@ class Step2AMulDivByTen extends Component {
     });
   }
 
-  renderEquations(){
-    var items = [...this.state.items];
-
-    return items.map((item, idx) => {
-      return <Equation
-        key={item.id}
-        id={item.id}
-        firstOperand={item.firstOperand}
-        firstOperandInput={item.firstOperandInput}
-        secondOperand={item.secondOperand}
-        secondOperandInput={item.secondOperandInput}
-        operator={item.operator}
-        answer={item.answer}
-        showAnswer={item.showAnswer}
-        input={item.input}
-        expectedInput={item.expectedInput}
-        solved={item.solved}
-        done={item.done}
-        onChange={this.props.handleChange.bind(this)} />
-    });
-  }
-
   render() {
 
     return (
       <div id="Step2AMulDivByTen" className="step-items">
         <h3>{this.props.title}</h3>
         { this.props.renderResults.call(this) }
-        <div className="equations">
-          { this.renderEquations() }
-        </div>
-        <div className="actions">
-          { this.props.actionButtons.call(this) }
-        </div>
+        <Segment>
+          <div className="equations">
+          { this.props.renderEquations.call(this) }
+          </div>
+          <Divider section />
+          <div className="actions">
+            { this.props.actionButtons.call(this) }
+          </div>
+        </Segment>
 
       </div>
 
