@@ -56,21 +56,7 @@ class Step2AGroupsHundreds extends Component {
   render() {
 
     return (
-      <div id="Step2AGroupsHundreds" className="step-items">
-        <h3>{this.props.title}</h3>
-        { this.props.renderResults.call(this) }
-        <Segment>
-          <div className="equations">
-          { this.props.renderEquations.call(this) }
-          </div>
-          <Divider section />
-          <div className="actions">
-            { this.props.actionButtons.call(this) }
-          </div>
-        </Segment>
-
-      </div>
-
+      this.props.renderTest.call(this)
     );
   }
 }

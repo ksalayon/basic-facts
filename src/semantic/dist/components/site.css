@@ -19,7 +19,7 @@ body {
   height: 100%;
 }
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 body {
   margin: 0px;
@@ -196,6 +196,45 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
         Global Overrides
 *******************************/
 
+.equation-component .ui.segment {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+.equation-component .ui.segment .ui.label {
+  font-size: 1em;
+}
+.equation-component .ui.segment .ui.input {
+  font-size: 1em;
+  max-width: 95px;
+  padding: .5em!important;
+}
+.equation-component .ui.segment .ui.input input {
+  border-color: #00B5AD;
+  font-weight: bold;
+  color: #6435C9;
+}
+.step-menu .ui.card .content .header:not(.ui) {
+  font-size: 0.9em;
+}
+.step-menu .ui.card .content .extra a:not(.ui) {
+  color: #DB2828;
+}
+.step-menu .ui.card .content a {
+  color: #DB2828;
+}
+.step-menu .ui.card.selected {
+  background-color: #6435C9;
+  color: #FFF;
+}
+.step-menu .ui.card.selected .extra a:not(.ui) {
+  color: #FFF;
+}
+.step-menu .ui.card.selected a {
+  color: #FFF;
+}
+.step-menu .ui.card.selected .header:not(.ui) {
+  color: #FBBD08;
+}
 
 
 /*******************************

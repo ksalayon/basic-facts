@@ -1,0 +1,62 @@
+/*******************************
+        Global Overrides
+*******************************/
+.equation-component {
+    .ui.segment {
+        padding-top:0.3em;
+        padding-bottom:0.3em;
+        .ui.label {
+            font-size: 1em;
+        }
+
+        .ui.input {
+            font-size: 1em;
+            max-width: 95px;
+            padding: .5em!important;
+            input {
+                border-color:@teal;
+                font-weight:bold;
+                color:@violet;
+            }
+        }
+    }
+
+}
+
+.step-menu {
+    .ui.card {
+        .content {
+            .header {
+                &:not(.ui) {
+                    font-size: 0.9em;
+                }
+            }
+
+            .extra a:not(.ui) {
+                color:@red;
+            }
+            
+            a {
+                color:@red;
+            }
+        }
+
+        &.selected {
+            background-color:@violet;
+            color:#FFF;
+
+            .extra a:not(.ui) {
+                color:#FFF;
+            }
+            a {
+                color:#FFF;
+            }
+
+            .header {
+                &:not(.ui) {
+                    color:@yellow;
+                }
+            }
+        }
+    }
+}

@@ -21,13 +21,14 @@ class Step2B extends Component {
     this.stepList = BFSource.step2bItems;
   }
   handleClick = (e) => {
+    console.log('e.target', e.target);
     var menu = document.getElementById('Step2BList');
-    const lis = menu.querySelectorAll("ul li");
+    const lis = menu.querySelectorAll(".step-card");
     [...lis].forEach(function(el){
       el.classList.remove('selected');
     });
 
-    e.target.parentNode.classList.add('selected');
+    e.target.parentNode.parentNode.classList.add('selected');
   }
 
   init() {
@@ -102,14 +103,14 @@ class Step2B extends Component {
     return (
       <Segment className="step-menu" id="Step2BList">
         <Header>This is the Step 2B Stage - Good Luck!</Header>
-        <Grid columns={2}>
-          <Grid.Column>
+        <Grid>
+          <Grid.Column width={7}>
             <Grid.Row stretched>
               <Grid columns={3}>
               {
                 this.stepList.map((step, idx) => {
                   return <Grid.Column key={step.id}>
-                    <Card>
+                    <Card className="step-card">
                       <Card.Content header={step.header} />
                       <Card.Content>
                         {step.content}
@@ -125,8 +126,8 @@ class Step2B extends Component {
             </Grid.Row>
           </Grid.Column>
 
-          <Grid.Column>
-            <Segment className="steps">
+          <Grid.Column width={9}>
+            <Segment className="steps" >
               {
                 this.stepList.map((step, idx) => {
                   return <Route path={step.link} key={step.id} render={() =>
@@ -142,6 +143,7 @@ class Step2B extends Component {
                       actionButtons={this.actionButtons}
                       init={this.init}
                       renderEquations={this.props.renderEquations}
+                      renderTest={this.props.renderTest}
                       />}/>
                 })
               }

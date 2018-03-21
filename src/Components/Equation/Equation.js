@@ -1,49 +1,69 @@
 import React, { Component } from 'react';
 import './index.css';
+import {
+  Button, Grid, Input, Segment, Image, Item, Label, Icon
+} from 'semantic-ui-react';
 
 class Equation extends Component {
 
-  renderParts() {
-
-    var resultPart;
-
+  renderAnswer() {
+    let part;
     if(!this.props.showAnswer) {
-      resultPart = (<div className="answer"><input type="text" value={this.props.input}  onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
+      part = (<Input className="answer" type="text" value={this.props.input}  onChange={(e) => this.props.onChange(e, this.props.id)}/>);
     } else {
-      resultPart = (<div><span className="answer">{ this.props.answer }</span></div>);
+      part = (<Label className="answer" circular color="green">{ this.props.answer }</Label>);
     }
+    return part;
+  }
 
+  renderFirstOp() {
     var firstOperandPart;
     if(!this.props.firstOperandInput) {
-      firstOperandPart = (<div className="first-operand">{ this.props.firstOperand }</div>);
+      firstOperandPart = (<Label  color="blue" className="first-operand" circular>{ this.props.firstOperand }</Label>);
     } else {
-      firstOperandPart = (<div className="first-operand input"><input type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
+      firstOperandPart = (<Input className="first-operand input" type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/>);
     }
 
+    return firstOperandPart;
+
+  }
+
+  renderSecondOp() {
     var secondOperandPart;
     if(!this.props.secondOperandInput) {
-      secondOperandPart = (<div className="second-operand">{ this.props.secondOperand }</div>);
+      secondOperandPart = (<Label color="blue" className="second-operand" circular>{ this.props.secondOperand }</Label>);
     } else {
-      secondOperandPart = (<div className="second-operand input"><input type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/></div>);
+      secondOperandPart = (<Input className="second-operand" type="text" value={this.props.input} onChange={(e) => this.props.onChange(e, this.props.id)}/>);
     }
 
-    var successPart;
+    return secondOperandPart;
+  }
+
+  renderResult() {
+    var part;
     if(this.props.done) {
       if (this.props.solved) {
-        successPart = (<div className="result"><span role="img" aria-label="correct">&#x2705;</span></div>)
+        part = (<Segment basic className="result"><span role="img" aria-label="correct"><Icon name="checkmark" color="green"/></span></Segment>)
       } else {
-        successPart = (<div className="result"><span role="img" aria-label="correct">&#x274C;</span> - The answer is {this.props.expectedInput}</div>)
+        part = (<Segment basic className="result"><span role="img" aria-label="correct"><Icon name="x" color="red"/></span> - The answer is {this.props.expectedInput}</Segment>)
       }
     }
 
-    return <div className="parts">
-        { firstOperandPart }
-        <div className="operator">{ this.props.operator }</div>
-        { secondOperandPart }
-        <div className="equals-sign">=</div>
-        { resultPart }
-        { successPart }
-      </div>
+    return part;
+  }
+
+  renderParts() {
+
+    return <Segment className="parts">
+            <Label.Group circular>
+            { this.renderFirstOp() }
+            <Label className="operator" color="red">{ this.props.operator }</Label>
+            { this.renderSecondOp() }
+            <Label className="equals-sign" color="orange">=</Label>
+            { this.renderAnswer() }
+            { this.renderResult() }
+          </Label.Group>
+          </Segment>;
   }
 
   render() {

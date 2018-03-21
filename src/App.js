@@ -8,7 +8,7 @@ import { BFSetttings } from './Scenes/Settings/BFSettings';
 import { ResultDisplay } from './Components/ResultDisplay';
 import { Equation } from './Components/Equation/Equation';
 import {
-  Button, Container, Grid, Header, Icon, Image, Item, Label, Menu, Segment, Step, Table, Tab
+  Button, Container, Grid, Header, Icon, Image, Item, Label, Menu, Segment, Step, Table, Tab, Divider
 } from 'semantic-ui-react';
 
 export default class BF extends Component {
@@ -106,15 +106,35 @@ export default class BF extends Component {
     return btn;
   }
 
+  renderTest() {
+    return (
+      <div id={this.props.id} className="step-items">
+        <h3>{this.props.title}</h3>
+        { this.props.renderResults.call(this) }
+        <Segment basic>
+          <div className="equations">
+          { this.props.renderEquations.call(this) }
+          </div>
+          <Divider section />
+          <div className="actions">
+            { this.props.actionButtons.call(this) }
+          </div>
+        </Segment>
+
+      </div>
+
+    );
+  }
+
   render = () => {
     return (
       <div>
-        <Menu pointing>
-          <Menu.Item name='home' as={Link} to="/" />
-          <Menu.Item name='step2a' as={Link} to="/step2a" />
-          <Menu.Item name='step2b' as={Link} to="/step2b" />
+        <Menu pointing inverted>
+          <Menu.Item name='home' color="grey" as={Link} to="/" />
+          <Menu.Item name='step2a' color="yellow" as={Link} to="/step2a" />
+          <Menu.Item name='step2b' color="green" as={Link} to="/step2b" />
           <Menu.Menu position='right'>
-            <Menu.Item name='settings' as={Link} to="/settings" />
+            <Menu.Item name='settings' color="violet" as={Link} to="/settings" />
           </Menu.Menu>
         </Menu>
 
@@ -128,6 +148,7 @@ export default class BF extends Component {
               actionButtons={this.actionButtons}
               reload={this.reload}
               renderEquations={this.renderEquations}
+              renderTest={this.renderTest}
               />}/>
           <Route path="/step2b" render={() =>
             <Step2B
@@ -135,6 +156,7 @@ export default class BF extends Component {
               submitHandler={this.submitHandler}
               handleChange={this.handleChange}
               renderEquations={this.renderEquations}
+              renderTest={this.renderTest}
               />}/>
           <Route path="/settings" component={BFSetttings} />
         </Container>
