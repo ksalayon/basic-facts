@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -33,9 +33,9 @@ ul.h-menu li {
     margin-right: 20px;
     background-color:#CCC;
 
-}
+} */
 
-.step-menu {
+/* .step-menu {
     float:left;
     width:100%;
     clear:left;
@@ -46,17 +46,17 @@ ul.h-menu li {
     padding: 0;
     width: 50%;
     float: left;
-}
+} */
 
 .step-menu ul li {
 
-    padding: 10px;
+    /* padding: 10px;
     background-color:#54b9e4;
     color:#FFF;
-    margin: 10px;
+    margin: 10px; */
 }
 
-.step-menu ul li.selected {
+/* .step-menu ul li.selected {
     background-color: #acd8eb;
     color:#172157;
 }
@@ -85,4 +85,4 @@ ul.h-menu li {
     padding:5px 10px;
     background-color: #66b67a;
     color:#FFF;
-}
+} */

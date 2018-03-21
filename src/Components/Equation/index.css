@@ -1,4 +1,4 @@
-.equation-component {
+/* .equation-component {
     display:block;
     position: relative;
     float:left;
@@ -34,10 +34,9 @@
 .equation-component .parts .second-operand input {
     max-width: 50px;
     font-size:18px;
-    /* padding:5px; */
 }
 
 .equation-component input {
     font-size:18px;
     max-width: 50px;
-}
+} */
