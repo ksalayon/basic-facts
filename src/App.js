@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './index.css';
 import { Route, Link } from "react-router-dom";
 import { Home } from './Scenes/Home/Home';
-import { Step2A } from './Scenes/Step2A/Step2A';
+import Step2A from './Scenes/Step2A/Step2A';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
-import { ResultDisplay } from './Components/ResultDisplay';
+import ResultDisplay from './Components/ResultDisplay';
 import { MainMenu } from './Components/MainMenu/MainMenu';
 import { Equation } from './Components/Equation/Equation';
 import {

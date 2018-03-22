@@ -6,6 +6,7 @@ import BFSource from '../../Services/Datasource/BFSource';
 import {
   Card, Header, Segment, Grid
 } from 'semantic-ui-react';
+import sizeMe from 'react-sizeme';
 
 class Step2A extends Component {
 
@@ -27,6 +28,7 @@ class Step2A extends Component {
   }
 
   render() {
+    const { width, height } = this.props.size;
     return (
       <Segment className="step-menu" id="Step2AList">
         <Header>This is the Step 2A Stage - Good Luck!</Header>
@@ -82,4 +84,5 @@ class Step2A extends Component {
   }
 }
 
-export { Step2A };
+export default sizeMe({ monitorHeight: true })(Step2A);
+// export { Step2A };

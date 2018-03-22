@@ -1,4 +1,6 @@
 import React from 'react';
+import sizeMe from 'react-sizeme';
+import Confetti from 'react-confetti'
 
 var ResultDisplay = (props) => {
 
@@ -22,13 +24,22 @@ var ResultDisplay = (props) => {
   }
 
   var score = <p>You got {props.points} points over {props.total} </p>;
+
+  const { width, height } = props.size;
+
+  var conf;
+  if(percentage === 100) {
+    conf = <Confetti {...props.size} />;
+  }
   return (
     <div className="results">
       {intro}
       {score}
+      { conf }
     </div>
 
   );
 };
 
-export {ResultDisplay};
+export default sizeMe({ monitorHeight: true })(ResultDisplay);
+// export {ResultDisplay};

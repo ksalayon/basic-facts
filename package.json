@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
+    "react-confetti": "^2.0.2",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "react-sizeme": "^2.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
