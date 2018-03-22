@@ -9,11 +9,18 @@ import { ResultDisplay } from './Components/ResultDisplay';
 import { MainMenu } from './Components/MainMenu/MainMenu';
 import { Equation } from './Components/Equation/Equation';
 import {
-  Button, Container, Grid, Header, Icon, Image, Item, Label, Menu, Segment, Step, Table, Tab, Divider
+  Button, Container, Grid, Header, Icon, Image, Item, Label,
+  Menu, Segment, Step, Table, Tab, Divider, Transition
 } from 'semantic-ui-react';
 
 export default class BF extends Component {
 
+  constructor (props) {
+    super(props);
+    this.state = {
+      isTestVisible: false
+    }
+  }
   handleChange(e, id) {
 
     var val = parseInt(e.target.value, 10);
@@ -108,6 +115,8 @@ export default class BF extends Component {
   }
 
   renderTest() {
+
+
     return (
       <div id={this.props.id} className="step-items">
         <h3>{this.props.title}</h3>
@@ -123,7 +132,6 @@ export default class BF extends Component {
         </Segment>
 
       </div>
-
     );
   }
 

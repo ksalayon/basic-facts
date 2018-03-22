@@ -213,6 +213,9 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   font-weight: bold;
   color: #6435C9;
 }
+.step-menu.ui.segment {
+  border-top: 0px;
+}
 .step-menu .ui.card .content .header:not(.ui) {
   font-size: 0.9em;
 }
@@ -234,6 +237,15 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 .step-menu .ui.card.selected .header:not(.ui) {
   color: #FBBD08;
+}
+#BFMainMenu {
+  background-color: #FFF;
+  border-bottom: thin solid #CCC;
+}
+#BFMainMenu a.item:not(.active) {
+  background-color: #FFF;
+  color: black;
+  border-right: thin solid #CCC;
 }
 
 

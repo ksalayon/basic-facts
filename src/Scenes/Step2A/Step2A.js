@@ -11,7 +11,9 @@ class Step2A extends Component {
 
   constructor(props) {
     super(props);
-    this.stepList = BFSource.step2aItems;
+    this.state = {
+      stepList: BFSource.step2aItems
+    }
   }
 
   handleClick = (e) => {
@@ -33,7 +35,7 @@ class Step2A extends Component {
             <Grid.Row stretched>
               <Grid columns={3}>
                 {
-                  this.stepList.map((step, idx) => {
+                  this.state.stepList.map((step, idx) => {
                     return <Grid.Column key={step.id}>
                       <Card className="step-card">
                         <Card.Content header={step.header} />
@@ -54,7 +56,7 @@ class Step2A extends Component {
           <Grid.Column width={9}>
             <Segment className="steps">
               {
-                this.stepList.map((step, idx) => {
+                this.state.stepList.map((step, idx) => {
                   return <Route path={step.link} key={step.id} render={() =>
                     <Segment as={step.comp}
                       id={step.id}

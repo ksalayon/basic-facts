@@ -14,14 +14,23 @@ class MainMenu extends Component {
   }
 
   handleClick = (e, {name}) => {
+    // let event = e;
+    // event.persist();
     this.setState({
       active: name
-    })
+    });
+
+
+
+    // setTimeout(function() {
+    //   const backgroundStyle = window.getComputedStyle(event.target, null).getPropertyValue("background-color");
+    //   console.log('backgroundStyle: ', backgroundStyle, event.target);
+    // }, 0);
   }
 
   render() {
     return (
-      <Menu pointing inverted>
+      <Menu pointing inverted id="BFMainMenu">
         <Menu.Item name='home' color="blue" as={Link} to="/"
           onClick={this.handleClick} active={this.state.active === 'home'}/>
         <Menu.Item name='step2a' color="orange" as={Link} to="/step2a"
