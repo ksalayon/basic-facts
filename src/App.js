@@ -6,6 +6,7 @@ import { Step2A } from './Scenes/Step2A/Step2A';
 import { Step2B } from './Scenes/Step2B/Step2B';
 import { BFSetttings } from './Scenes/Settings/BFSettings';
 import { ResultDisplay } from './Components/ResultDisplay';
+import { MainMenu } from './Components/MainMenu/MainMenu';
 import { Equation } from './Components/Equation/Equation';
 import {
   Button, Container, Grid, Header, Icon, Image, Item, Label, Menu, Segment, Step, Table, Tab, Divider
@@ -129,15 +130,7 @@ export default class BF extends Component {
   render = () => {
     return (
       <div>
-        <Menu pointing inverted>
-          <Menu.Item name='home' color="grey" as={Link} to="/" />
-          <Menu.Item name='step2a' color="yellow" as={Link} to="/step2a" />
-          <Menu.Item name='step2b' color="green" as={Link} to="/step2b" />
-          <Menu.Menu position='right'>
-            <Menu.Item name='settings' color="violet" as={Link} to="/settings" />
-          </Menu.Menu>
-        </Menu>
-
+        <MainMenu/>
         <Container fluid>
           <Route exact path="/" render={() => <Home/>} />
           <Route path="/step2a" render={() =>
