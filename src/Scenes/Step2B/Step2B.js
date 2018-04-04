@@ -19,7 +19,7 @@ class Step2B extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stepList: BFSource.step2aItems
+      stepList: BFSource.step2bItems
     }
   }
   handleClick = (e) => {
