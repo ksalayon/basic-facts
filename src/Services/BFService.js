@@ -1,7 +1,5 @@
 var BFService = (function(){
 
-  var items = [];
-
   function checkPair(tmpItems, pair) {
     var exists = false;
     tmpItems.forEach((item, index) => {
@@ -15,36 +13,41 @@ var BFService = (function(){
 
 
 
-  function randomPairs(operands, min, max, numberOfItems) {
-    min = Math.ceil(min);
-    var maxPlus = (Math.floor(max) + 1);
-    for(let i = 0; i <= numberOfItems; i++) {
-      var tmpItems = [...items];
-      if(tmpItems.length >= numberOfItems){
-        break;
-      }
+  function randomPairs(ops, minimun, maximum, numOfItems) {
+    let items = [];
 
-      var randomRes = Math.floor(Math.random() * (maxPlus - min)); //The maximum is exclusive and the minimum is inclusive
-      let pair = Object.assign({}, operands[randomRes]);
-
-      if(tmpItems.length > 0) {
-        var exists = false;
-
-        exists = checkPair(tmpItems, pair);
-
-        if(!exists) {
-          items.push(pair);
-        } else {
-          randomPairs(operands, min, max, numberOfItems);
+    return (function randomizer(operands, min, max, numberOfItems){
+      min = Math.ceil(min);
+      let maxPlus = (Math.floor(max) + 1);
+      for(let i = 0; i <= numberOfItems; i++) {
+        let tmpItems = [...items];
+        if(tmpItems.length >= numberOfItems){
+          break;
         }
 
-      } else {
-        items.push(pair);
-        tmpItems = [...items];
-      }
-    }
+        let randomRes = Math.floor(Math.random() * (maxPlus - min)); //The maximum is exclusive and the minimum is inclusive
+        let pair = Object.assign({}, operands[randomRes]);
 
-    return items;
+        if(tmpItems.length > 0) {
+          let exists = false;
+
+          exists = checkPair(tmpItems, pair);
+
+          if(!exists) {
+            items.push(pair);
+          } else {
+            console.log('operands, min, max, numberOfItems: ', operands, min, max, numberOfItems);
+            randomizer(operands, min, max, numberOfItems);
+          }
+
+        } else {
+          items.push(pair);
+          tmpItems = [...items];
+        }
+      }
+      return items;
+    })(ops, minimun, maximum, numOfItems);
+
   }
 
   function checkForDuplicates(pairs) {
@@ -64,10 +67,7 @@ var BFService = (function(){
     hasDups: (pairs) => {
       return (checkForDuplicates(pairs).length > 0) ? true : false;
     },
-    randomPairs: function(operands, min, max, numberOfItems) {
-      items = [];
-      return randomPairs(operands, min, max, numberOfItems);
-    },
+    randomPairs: randomPairs,
     checkPair: checkPair
   }
 
